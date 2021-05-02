@@ -22,43 +22,20 @@
     </div>
 
     <div class="col-sm-6">
+      <h1>Email Signin</h1>
+      <hr>
+      <br>
+      <form class="d-grid">
+        <input type="text" name="correo" class="form-control mb-2" placeholder="Correo">
+        <input type="password" name="password" class="form-control mb-2" placeholder="Password">
 
+        <button type="submit" class="btn btn-primary">
+          ingresar
+        </button>
+      </form>
     </div>
   </div>
 
-  <script>
-    var url = ( window.location.hostname.includes('localhost'))
-              ? 'http://localhost:3002/api/auth/google'
-              : 'https://jlpj-node-rest-server.herokuapp.com/api/auth/google'
-    function onSignIn(googleUser) {
-      // Useful data for your client-side scripts:
-      var profile = googleUser.getBasicProfile();
-      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail());
-
-      // The ID token you need to pass to your backend:
-      const id_token = googleUser.getAuthResponse().id_token;
-      const data = { id_token };
-      fetch( url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then( res => res.json())
-      .then( data => console.log('Nuestro server', data))
-      .catch(console.log);
-    }
-
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
-      });
-    }
-  </script>
+  <script src="./js/auth.js"></script>
 </body>
 </html>

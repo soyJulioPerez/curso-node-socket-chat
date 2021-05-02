@@ -8,13 +8,24 @@
 
   <meta name="google-signin-client_id" content="973037027362-fknspvb520gefqq4i1p56fsoh9mc46fl.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
-<body>
-  <h1>Google Signin</h1>
-  <hr>
+<body class="container">
+  <div class="row mt-5">
+    <div class="col-sm-6">
+      <h1>Google Signin</h1>
+      <hr>
+      <br>
+      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+      <br>
+      <a href="#" onclick="signOut();">Sign out</a>
+    </div>
 
-  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-  <a href="#" onclick="signOut();">Sign out</a>
+    <div class="col-sm-6">
+
+    </div>
+  </div>
+
   <script>
     var url = ( window.location.hostname.includes('localhost'))
               ? 'http://localhost:3002/api/auth/google'
